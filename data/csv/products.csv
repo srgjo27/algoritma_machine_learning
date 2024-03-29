@@ -1,4 +1,4 @@
-id,category_id,subcategory_id,name,brand,Skin Type,type,description
+id,category_id,subcategory_id,name,brand,skin_type,type,description
 4,2,10,Zinc Refreshing Cool - anti ketombe,Zinc,Ketombe,Sampo,"""Zinc Refreshing Cool - anti ketombe
 ZINC Refreshing Cool Shampoo merupakan Shampoo Anti Ketombe dengan Complex Zinc-PTO Serum untuk mengurangi ketombe. Dilengkapi dengan ekstrak Green Tea Mint membuat rambut bersih, mudah diatur dan lebih segar. 
 
@@ -751,7 +751,9 @@ whitening, berfungsi membersihkan kulit kusam, membuat kulit tampak lebih cerah,
 - Diperkaya Brightening Extract, membuat kulit tampak lebih cerah, serta UV Filter yang melindungi kulit dari paparan sinar matahari
 - Tekstur yang ringan dan lembut, sehingga cepat meresap di kulit, dan tidak lengket
 - Dengan keharuman alami bunga mawar"
-262,3,21,Herborist Lulur Tradisional Bali - Beras,Herborist,kombinasi,Body Scrub,#NAME?
+262,3,21,Herborist Lulur Tradisional Bali - Beras,Herborist,kombinasi,Body Scrub,"- Herborist Lulur Bali terbuat dari bahan-bahan alami, wangi khas Bali yg tahan lama, bahan aktif whitening untuk membuat kulit lebih cerah.
+- Efektif dan cepat mengangkat sel kulit mati dan tidak menyebabkan kulit menjadi kering.
+- Herborist Rice membantu memperbarui pigmen melanin kulit & melindungi kulit dari paparan sinar matahari, mencegah keriput, membuat kulit lebih kencang & lembut."
 263,3,21,Herborist Lulur Tradisional Bali - Zaitun,Herborist,kering,Body Scrub,"HERBORIST Lulur Tradisional Bali Zaitun merupakan lulur yang mengandung minyak zaitun yang diperkaya dengan whitening, membantu meningkatkan kelembabkan ekstra serta menyamarkan kerutan halus dan berfungsi untuk menjaga meningkatkan elastisitas kulit, dan membuat kulit tampak lebih segar."
 264,3,21,Herborist Lulur Tradisional Bali - Avocado,Herborist,kering,Body Scrub,"Lulur Tradisional Bali dengan ekstrak alpukat alami dan diperkaya dengan whitening, melembapkan kulit kering, merawat kekenyalan kulit dan membuat kulit tampak lebih cerah."
 265,3,21,Sumber Ayu Body Scrub Bengkoang (kemasan putih),Sumber Ayu,kering,Body Scrub,Dengan formula baru Extra Cleansing dan Extra Fragrance untuk wangi yang lebih tahan lama. Kandungan ekstrak bengkoang membantu mencerahkan dan menyamarkan noda hitam. Dilengkapi juga dengan kandungan vitamin C sebagai antioksidan untuk melindungi kulit. Butiran Eco Friendly Scrub yang ramah lingkungan juga membantu mengangkat kotoran dan sel kulit mati agar kulit terasa lebih halus.
