@@ -129,7 +129,6 @@ id,user_id,name,product_id,rating,gender,age,skin_type_face,hair_issue,skin_type
 36,37,Elsa Klariza Silalahi,78,5,Perempuan,18-25,sensitif,kering,normal,"[""tidak_ada_alergi""]","[""bahan_alami""]","[""cruelty_free"",""sls""]","[""menghilangkan_jerawat"",""menghidrasi"",""perlindungan_matahari""]"
 36,37,Elsa Klariza Silalahi,9,3,Perempuan,18-25,sensitif,kering,normal,"[""tidak_ada_alergi""]","[""bahan_alami""]","[""cruelty_free"",""sls""]","[""menghilangkan_jerawat"",""menghidrasi"",""perlindungan_matahari""]"
 36,37,Elsa Klariza Silalahi,114,5,Perempuan,18-25,sensitif,kering,normal,"[""tidak_ada_alergi""]","[""bahan_alami""]","[""cruelty_free"",""sls""]","[""menghilangkan_jerawat"",""menghidrasi"",""perlindungan_matahari""]"
-37,38,Anita,,,Perempuan,18-25,kombinasi,berminyak,normal,"[""tidak_ada_alergi""]",NULL,"[""paraben""]","[""menghilangkan_jerawat""]"
 38,39,Mesya Angeliqa Hutagalung,304,4,Perempuan,18-25,normal,ketombe,normal,"[""tidak_ada_alergi""]","[""bahan_alami"",""pewangi""]","[""sls""]","[""meratakan_warna_kulit"",""perlindungan_matahari""]"
 38,39,Mesya Angeliqa Hutagalung,234,3,Perempuan,18-25,normal,ketombe,normal,"[""tidak_ada_alergi""]","[""bahan_alami"",""pewangi""]","[""sls""]","[""meratakan_warna_kulit"",""perlindungan_matahari""]"
 39,40,Cecilia,46,5,Perempuan,18-25,normal,ketombe,normal,"[""tidak_ada_alergi""]","[""pewangi""]","[""bahan_alami""]","[""perlindungan_matahari""]"

@@ -129,7 +129,6 @@ id,user_id,name,product_id,rating,gender,age,skin_type_face,hair_issue,skin_type
 36,37,Elsa Klariza Silalahi,78.0,5.0,Perempuan,18-25,['sensitif'],['kering'],['normal'],['tidak ada alergi'],['bahan alami'],['cruelty freesls'],['hilang jerawatmenghidrasiperlindungan matahari']
 36,37,Elsa Klariza Silalahi,9.0,3.0,Perempuan,18-25,['sensitif'],['kering'],['normal'],['tidak ada alergi'],['bahan alami'],['cruelty freesls'],['hilang jerawatmenghidrasiperlindungan matahari']
 36,37,Elsa Klariza Silalahi,114.0,5.0,Perempuan,18-25,['sensitif'],['kering'],['normal'],['tidak ada alergi'],['bahan alami'],['cruelty freesls'],['hilang jerawatmenghidrasiperlindungan matahari']
-37,38,Anita,,,Perempuan,18-25,['kombinasi'],['minyak'],['normal'],['tidak ada alergi'],['nan'],['paraben'],['hilang jerawat']
 38,39,Mesya Angeliqa Hutagalung,304.0,4.0,Perempuan,18-25,['normal'],['ketombe'],['normal'],['tidak ada alergi'],['bahan alamipewangi'],['sls'],['rata warna kulitperlindungan matahari']
 38,39,Mesya Angeliqa Hutagalung,234.0,3.0,Perempuan,18-25,['normal'],['ketombe'],['normal'],['tidak ada alergi'],['bahan alamipewangi'],['sls'],['rata warna kulitperlindungan matahari']
 39,40,Cecilia,46.0,5.0,Perempuan,18-25,['normal'],['ketombe'],['normal'],['tidak ada alergi'],['wangi'],['bahan alami'],['lindung matahari']
