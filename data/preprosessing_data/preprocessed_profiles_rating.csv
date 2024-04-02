@@ -100,7 +100,6 @@ id,user_id,name,product_id,rating,gender,age,skin_type_face,hair_issue,skin_type
 24,25,daniel silalahi,88.0,5.0,Laki-laki,18-25,['minyak'],['kering'],['kering'],['tidak ada alergi'],['bahan alamipewangi'],['nan'],['hilang jerawatmenghilangkan noda hitam']
 24,25,daniel silalahi,32.0,5.0,Laki-laki,18-25,['minyak'],['kering'],['kering'],['tidak ada alergi'],['bahan alamipewangi'],['nan'],['hilang jerawatmenghilangkan noda hitam']
 24,25,daniel silalahi,142.0,4.0,Laki-laki,18-25,['minyak'],['kering'],['kering'],['tidak ada alergi'],['bahan alamipewangi'],['nan'],['hilang jerawatmenghilangkan noda hitam']
-25,26,Charlos Purba,,,Laki-laki,18-25,['sensitif'],['normal'],['normal'],['kandung kimia'],['bahan alamipewangisls'],['minyak mineral'],['rata warna kulitmenghilangkan jerawatperlindungan matahari']
 27,28,Yosephine25,46.0,5.0,Perempuan,18-25,['minyak'],['minyak'],['kombinasi'],['tidak ada alergi'],['bahan alamipewangi'],['paraben'],['rata warna kulitmenghilangkan jerawatperlindungan matahari']
 27,28,Yosephine25,120.0,5.0,Perempuan,18-25,['minyak'],['minyak'],['kombinasi'],['tidak ada alergi'],['bahan alamipewangi'],['paraben'],['rata warna kulitmenghilangkan jerawatperlindungan matahari']
 28,29,Angelica Theresia Manurung,58.0,5.0,Perempuan,18-25,['normal'],['minyak'],['normal'],['tidak ada alergi'],['bahan alamivegan'],['paraben'],['anti agingperlindungan mataharimenghilangkan noda hitam']
