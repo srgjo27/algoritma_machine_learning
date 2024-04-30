@@ -1,17 +1,17 @@
-from sqlalchemy import create_engine
+import requests
 
-def create_db_connection():
-    # Masukkan informasi koneksi database Anda
-    db_host = 'localhost'
-    db_user = 'root'
-    db_password = ''
-    db_name = 'deti1931_antonitulang'
+def get_data_from_api(endpoint):
+    # Masukkan URL endpoint API Laravel Anda
+    base_url = 'http://localhost:8000/api'
+    url = f'{base_url}/{endpoint}'
 
-    # Buat URL koneksi
-    db_url = f'mysql://{db_user}:{db_password}@{db_host}/{db_name}'
+    # Kirim permintaan GET ke API
+    response = requests.get(url)
 
-    # Buat engine untuk koneksi
-    engine = create_engine(db_url)
-
-    # Kembalikan objek koneksi
-    return engine
+    # Pastikan permintaan berhasil
+    if response.status_code == 200:
+        # Ubah respons menjadi JSON dan kembalikan
+        return response.json()
+    else:
+        print(f'Error: received status code {response.status_code}')
+        return None

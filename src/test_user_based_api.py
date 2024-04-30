@@ -6,30 +6,15 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from sklearn.metrics.pairwise import cosine_similarity
-from connection import create_db_connection
+from connection import get_data_from_api
 
 app = Flask(__name__)
 
-# Membuat koneksi ke database
-engine = create_db_connection()
-
-# Query untuk mengambil data dari tabel products, product_reviews, dan profiles
-q_profiles_rating = """
-    SELECT 
-        u.id AS user_id, u.name AS user_name, pf.gender, pf.age, pf.skin_type_face, 
-        pf.hair_issue, pf.skin_type_body, pf.allergy_history, pf.preferred_products, 
-        pf.avoided_products, pf.specific_needs,
-        pr.id AS review_id, pr.product_id, pr.rating
-    FROM 
-        users u
-    LEFT JOIN 
-        profiles pf ON u.id = pf.user_id
-    LEFT JOIN 
-        product_reviews pr ON u.id = pr.user_id;
-"""
+# Mengambil data dari API
+profiles_rating = get_data_from_api('profiles-rating')
 
 # Mengambil data dari database menggunakan query
-dt_profiles_rating_df = pd.read_sql(q_profiles_rating, engine)
+dt_profiles_rating_df = pd.DataFrame(profiles_rating)
 
 # Menggantikan nilai-nilai yang kosong dengan nilai 0
 dt_profiles_rating_df['review_id'] = dt_profiles_rating_df['review_id'].fillna(0).astype(int)
@@ -107,7 +92,7 @@ def recommend_default_products():
     popular_products = dt_profiles_rating_df.groupby('product_id')['rating'].count().sort_values(ascending=False)
     return popular_products.index.tolist()
 
-@app.route('/recommendations/<int:user_id>')
+@app.route('http://localhost:5000/user-based/<int:user_id>')
 def get_recommendations(user_id):
     predictions = {}
     similarity_sum = user_similarities.loc[user_id].sum()
