@@ -17,6 +17,11 @@ dt_profiles_rating_df = pd.DataFrame(profiles_rating)
 # Mengambil data dari database menggunakan query
 dt_product_df = pd.DataFrame(product_data)
 
+# Menggantikan nilai-nilai yang kosong dengan nilai 0
+dt_profiles_rating_df['review_id'] = dt_profiles_rating_df['review_id'].fillna(0).astype(int)
+dt_profiles_rating_df['product_id'] = dt_profiles_rating_df['product_id'].fillna(0).astype(int)
+dt_profiles_rating_df['rating'] = dt_profiles_rating_df['rating'].fillna(0).astype(float)
+
 # Preprocessing data teks
 def preprocess_text(text):
     text = str(text).lower() 

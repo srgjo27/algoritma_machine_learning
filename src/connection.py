@@ -1,5 +1,4 @@
 import requests
-from requests.exceptions import RequestException
 
 def get_data_from_api(endpoint):
     # Masukkan URL endpoint API Laravel Anda
