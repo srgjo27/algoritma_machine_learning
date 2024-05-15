@@ -22,8 +22,8 @@ def get_data_from_cache_or_api(endpoint):
         return api_data
 
 # Mengambil data dari API
-profiles_rating = get_data_from_api('profiles-rating')
-product_data = get_data_from_api('product-data')
+profiles_rating = get_data_from_cache_or_api('profiles-rating')
+product_data = get_data_from_cache_or_api('product-data')
 
 # Mengambil data dari database menggunakan query
 dt_profiles_rating_df = pd.DataFrame(profiles_rating)
