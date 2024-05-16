@@ -1,7 +1,5 @@
 from flask import Flask, request, jsonify
-from preprocessing import dt_profiles_rating_df
-from tasks import calculate_recommendations
-from user_based import user_similarities, items
+from preprocessing import dt_profiles_rating_df, user_similarities, items, calculate_similarity, grouped_data
 
 app = Flask(__name__)
 
@@ -28,10 +26,18 @@ def get_user_based_recommendations(user_id):
 
 @app.route('/content-based/<int:user_id>', methods=['GET'])
 def get_content_based_recommendations(user_id):
-    # Panggil tugas Celery untuk menghitung rekomendasi
-    task = calculate_recommendations.delay(user_id)
-    result = task.get()  # Menunggu hasil dari tugas Celery
-    return jsonify(result)
+    # Inisialisasi list untuk menyimpan rekomendasi produk
+    recommendations = []
+
+    # Iterasi melalui setiap kelompok
+    for _, group in grouped_data:
+        recommendations.extend(calculate_similarity(group, user_id))
+
+    # Menghapus duplikat dan mengubah int64 ke integer
+    recommendations = list(set(recommendations))
+
+    # Mengembalikan rekomendasi sebagai list
+    return jsonify([int(id) for id in recommendations])
 
 if __name__ == '__main__':
     app.run(debug=True)
