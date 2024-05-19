@@ -1,7 +1,32 @@
-from flask import Flask, request, jsonify
-from preprocessing import dt_profiles_rating_df, user_similarities, items, calculate_similarity, grouped_data
+from flask import Flask, jsonify
+from user_based import items, user_similarities, dt_profiles_rating_df
+from content_based import grouped_data, calculate_similarity
+import threading
+import time
+import importlib
+import preprocessing, user_based, content_based
 
 app = Flask(__name__)
+
+def reload_data():
+    while True:
+        # Memuat ulang data dari API setiap 60 detik
+        time.sleep(10)
+        importlib.reload(preprocessing)
+        importlib.reload(user_based)
+        importlib.reload(content_based)
+
+        global dt_profiles_rating_df, user_similarities, grouped_data
+        dt_profiles_rating_df = preprocessing.dt_profiles_rating_df
+        user_similarities = user_based.user_similarities
+        grouped_data = content_based.grouped_data
+
+        print("Reload...")
+
+# Fungsi polling akan dijalankan di thread terpisah
+polling_thread = threading.Thread(target=reload_data)
+polling_thread.daemon = True
+polling_thread.start()
 
 @app.route('/user-based/<int:user_id>', methods=['GET'])
 def get_user_based_recommendations(user_id):
