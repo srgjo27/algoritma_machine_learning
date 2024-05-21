@@ -10,7 +10,7 @@ for column in text_colums_content:
     dt_product_df[column] = dt_product_df[column].apply(preprocess_text)
 
 # Lakukan pengelompokan berdasarkan category_id
-grouped_data = dt_product_df.groupby('category_id')
+grouped_data = dt_product_df.groupby(['category_id', 'subcategory_id'])
 
 # Fungsi untuk menghitung TF-IDF dan similaritas kosinus serta memberikan rekomendasi
 def calculate_similarity(group, user_id):
@@ -18,7 +18,7 @@ def calculate_similarity(group, user_id):
     tfidf_vectorizer = TfidfVectorizer()
 
     # Ambil atribut untuk perhitungan (subcategory_id dan skin_type)
-    attributes = group[['subcategory_id', 'skin_type_face', 'hair_issue', 'skin_type_body']].astype(str).apply(lambda x: ' '.join(x), axis=1)
+    attributes = group[['skin_type_face', 'hair_issue', 'skin_type_body']].astype(str).apply(lambda x: ' '.join(x), axis=1)
 
     # Hitung TF-IDF
     tfidf_matrix = tfidf_vectorizer.fit_transform(attributes)
@@ -60,10 +60,10 @@ def calculate_similarity(group, user_id):
                                          0.05 * (group.iloc[idx]['rating'] / total_ratings) + 
                                          0.05 * (group.iloc[idx]['rating'] / average_rating))
                 recommendations.append((group.iloc[idx]['id'], recommendation_weight))
-                if len(recommendations) >= 4:  # Hanya ambil 3 atau 4 rekomendasi teratas
+                if len(recommendations) >= 10:  # Hanya ambil 3 atau 4 rekomendasi teratas
                     break
 
-        if len(recommendations) >= 4:  # Hanya ambil 3 atau 4 rekomendasi teratas
+        if len(recommendations) >= 10:  # Hanya ambil 3 atau 4 rekomendasi teratas
             break
 
     # Urutkan rekomendasi berdasarkan nilai similaritas tertinggi
