@@ -38,26 +38,3 @@ user_similarities = pd.DataFrame(user_similarities, index=user_ids, columns=user
 
 # Get unique items
 items = dt_profiles_rating_df['product_id'].unique()
-unique_user_ids = dt_profiles_rating_df['user_id'].unique()
-
-def get_recommendations_for_new_user(user_id):
-    if user_profile_similar_to_existing(user_id):
-        return recommend_based_on_profile(user_id)
-    else:
-        return recommend_default_products()
-
-def user_profile_similar_to_existing(user_id):
-    existing_user_profiles = dt_profiles_rating_df[dt_profiles_rating_df['user_id'] != user_id]
-    new_user_profile = dt_profiles_rating_df[dt_profiles_rating_df['user_id'] == user_id].iloc[0]
-    similar_users = existing_user_profiles[existing_user_profiles['gender'] == new_user_profile['gender']]
-    return not similar_users.empty
-
-def recommend_based_on_profile(user_id):
-    user_profile = dt_profiles_rating_df[dt_profiles_rating_df['user_id'] == user_id].iloc[0]
-    similar_users = dt_profiles_rating_df[dt_profiles_rating_df['gender'] == user_profile['gender']]
-    similar_users_ratings = similar_users.groupby('product_id')['rating'].mean().sort_values(ascending=False)
-    return similar_users_ratings.index.tolist()
-
-def recommend_default_products():
-    popular_products = dt_profiles_rating_df.groupby('product_id')['rating'].count().sort_values(ascending=False)
-    return popular_products.index.tolist()

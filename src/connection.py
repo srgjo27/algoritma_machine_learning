@@ -2,8 +2,8 @@ import requests
 
 def get_data_from_api(endpoint):
     # Masukkan URL endpoint API Laravel Anda
-    # base_url = 'https://ud-anthony.vpnstores.net/api' # gunakan api yang diambil dari hosting
-    base_url = 'http://127.0.0.1:8000/api' # gunakan dalam local untuk melakukan test
+    # base_url = 'https://ud-anthony.cloud/api' # gunakan api yang diambil dari hosting
+    base_url = 'http://localhost:8000/api' # gunakan dalam local untuk melakukan test
     url = f'{base_url}/{endpoint}'
 
     try:
