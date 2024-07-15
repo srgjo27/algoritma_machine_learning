@@ -10,8 +10,7 @@ app = Flask(__name__)
 
 def reload_data():
     while True:
-        # Memuat ulang data dari API setiap 60 detik
-        time.sleep(15)
+        time.sleep(60)
         importlib.reload(preprocessing)
         importlib.reload(user_based)
         importlib.reload(content_based)
@@ -22,7 +21,7 @@ def reload_data():
         user_similarities = user_based.user_similarities
         grouped_data = content_based.grouped_data
 
-        print("Reload...")
+        print("Reloaded data...")
 
 # Fungsi polling akan dijalankan di thread terpisah
 polling_thread = threading.Thread(target=reload_data)
@@ -32,7 +31,11 @@ polling_thread.start()
 @app.route('/user-based/<int:user_id>', methods=['GET'])
 def get_user_based_recommendations(user_id):
     predictions = {}
-    similarity_sum = user_similarities.loc[user_id].sum()
+
+    try:
+        similarity_sum = user_similarities.loc[user_id].sum()
+    except KeyError:
+        return jsonify({"error": f"User ID {user_id} tidak ditemukan dalam user_similarities"}), 404
     
     if similarity_sum > 0:
         for item in items:
