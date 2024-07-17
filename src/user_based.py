@@ -16,7 +16,7 @@ def convert_skin_type_face(skin_type):
     return skin_type_dict.get(skin_type, 0)
 
 def convert_hair_issue(hair_issue): 
-    hair_issue_dict = {'normal': 1, 'ketombe': 1, 'kering': 2, 'minyak': 3, 'rontok': 4, 'cabang': 5}
+    hair_issue_dict = {'normal': 0, 'ketombe': 1, 'kering': 2, 'minyak': 3, 'rontok': 4, 'cabang': 5}
     return hair_issue_dict.get(hair_issue, 0)
 
 def convert_skin_type_body(skin_type): 

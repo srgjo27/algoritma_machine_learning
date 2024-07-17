@@ -30,31 +30,43 @@ polling_thread.start()
 
 @app.route('/user-based/<int:user_id>', methods=['GET'])
 def get_user_based_recommendations(user_id):
+    # Inisialisasi dictionary kosong untuk menyimpan prediksi untuk setiap item
     predictions = {}
 
     try:
+        # Menjumlahkan skor kemiripan dari user yang diberikan dengan semua user lain
         similarity_sum = user_similarities.loc[user_id].sum()
     except KeyError:
+        # Jika user_id tidak ditemukan dalam dataframe user_similarities, kembalikan error 404
         return jsonify({"error": f"User ID {user_id} tidak ditemukan dalam user_similarities"}), 404
     
     if similarity_sum > 0:
+        # Jika user memiliki kemiripan dengan user lain
         for item in items:
+            # Mendapatkan rating yang diberikan kepada item oleh user lain
             other_user_ratings = dt_profiles_rating_df[dt_profiles_rating_df['product_id'] == item]
             rating_sum = 0
             weight_sum = 0
             for other_user_id in other_user_ratings['user_id']:
                 if other_user_id != user_id:
+                    # Mendapatkan rating yang diberikan oleh user lain
                     rating = other_user_ratings[other_user_ratings['user_id'] == other_user_id]['rating'].values[0]
+                    # Mendapatkan skor kemiripan antara user yang diberikan dan user lain
                     similarity = user_similarities.loc[user_id, other_user_id]
+                    # Mengalikan rating dengan kemiripan dan menambahkannya ke rating_sum
                     rating_sum += rating * similarity
+                    # Menambahkan skor kemiripan ke weight_sum
                     weight_sum += similarity
             if weight_sum > 0:
+                # Menghitung rata-rata rating berbobot untuk item
                 predictions[item] = rating_sum / weight_sum
             
+    # Mengurutkan item berdasarkan prediksi rating secara menurun dan mendapatkan 16 rekomendasi teratas
     recommendations = sorted(predictions, key=predictions.get, reverse=True)[:16]
-    # Convert integer recommendations to strings before returning as JSON
+    # Mengonversi rekomendasi yang berupa integer menjadi string sebelum mengembalikannya sebagai JSON
     recommendations = [str(item) for item in recommendations]
     return jsonify(recommendations)
+
 
 @app.route('/content-based/<int:user_id>', methods=['GET'])
 def get_content_based_recommendations(user_id):
