@@ -27,10 +27,33 @@ stemmer = factory.create_stemmer()
 stop_words = set(stopwords.words('indonesian'))
 
 def preprocess_text(text):
-    text = str(text).lower()
-    text = re.sub(r'[^\w\s]', '', text)
+    if text is None:
+        return text
+    # Case folding
+    print(f"Original text: {text}")
+    text = text.lower()
+    print(f"Lowercased text: {text}")
+    
+    # Remove punctuation (including underscores)
+    text = re.sub(r'_', ' ', text)
+    text = re.sub(r'[^\w\s]', ' ', text)
+    print(f"Punctuation removed text: {text}")
+    
+    # Remove extra whitespaces
+    text = text.strip()
+    text = re.sub(r'\s+', ' ', text)
+    
+    # Tokenizing
     tokens = word_tokenize(text)
+    print(f"Tokenized text: {tokens}")
+    
+    # Stopwords removing
     tokens = [word for word in tokens if word not in stop_words]
+    print(f"Stopwords removed text: {tokens}")
+    
+    # Stemming
     tokens = [stemmer.stem(word) for word in tokens]
     text = ' '.join(tokens)
+    print(f"Stemmed text: {text}")
+    
     return text

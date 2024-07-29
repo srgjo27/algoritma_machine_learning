@@ -28,11 +28,17 @@ dt_profiles_rating_df["hair_issue"] = dt_profiles_rating_df["hair_issue"].apply(
 dt_profiles_rating_df["skin_type_body"] = dt_profiles_rating_df["skin_type_body"].apply(convert_skin_type_body)
 
 # Precompute user vectors
+# Kelompokkan data berdasarkan 'user_id' dan hitung nilai rata-rata dari 'jenis_kulit_wajah', 'masalah_rambut', dan 'jenis_kulit_tubuh' untuk setiap pengguna
 user_vectors = dt_profiles_rating_df.groupby('user_id')[['skin_type_face', 'hair_issue', 'skin_type_body']].mean().round(2)
+# Setel ulang indeks sehingga 'user_id' menjadi kolom biasa di dalam dataframe
 user_vectors.reset_index(inplace=True)
+# Menyaring user_id yang tidak ada di dt_profiles_rating_df dan hanya menyimpan vektor pengguna yang relevan
 user_vectors = user_vectors[user_vectors['user_id'].isin(dt_profiles_rating_df['user_id'].unique())]
+# Simpan user_ids secara terpisah untuk digunakan nanti
 user_ids = user_vectors['user_id']
+# Hapus kolom 'user_id' karena kolom ini sekarang disimpan di dalam user_ids dan tidak lagi diperlukan untuk perhitungan kemiripan
 user_vectors = user_vectors.drop('user_id', axis=1)
+
 user_similarities = cosine_similarity(user_vectors)
 user_similarities = pd.DataFrame(user_similarities, index=user_ids, columns=user_ids).round(2)
 
